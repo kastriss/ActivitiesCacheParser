@@ -1,5 +1,3 @@
-# Lock-Proof Windows Timeline Executable Extractor with Launch Timestamps
-# Automatically maps execution records and exports everything to a Desktop CSV.
 
 $cdpPath = "$env:LOCALAPPDATA\ConnectedDevicesPlatform"
 if (-not (Test-Path $cdpPath)) {

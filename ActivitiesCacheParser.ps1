@@ -9,11 +9,11 @@ if (-not (Test-Path $cdpPath)) {
 
 $dbFile = Get-ChildItem -Path $cdpPath -Filter "ActivitiesCache.db" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
 if (-not $dbFile) {
-    Write-Error "Could not locate ActivitiesCache.db file."
+    Write-Error "Could not locate ActivitiesCache.db file. Might be disabled"
     return
 }
 
-Write-Host "Bypassing active system locks and cloning database..." -ForegroundColor Cyan
+Write-Host "Accessing the Activitiescache.db file..." -ForegroundColor Cyan
 $tempDbPath = Join-Path $env:TEMP "ActivitiesCache_Timeline.db"
 
 try {
@@ -108,7 +108,7 @@ finally {
     }
 }
 
-# --- CSV OUTPUT LAYER ---
+# CSV OUTPUT
 if ($results.Count -gt 0) {
     # Define file target directly to your Windows desktop environment
     $csvPath = Join-Path ([Environment]::GetFolderPath("Desktop")) "Timeline_Execution_Report.csv"
@@ -124,3 +124,6 @@ if ($results.Count -gt 0) {
 } else {
     Write-Warning "Database read successfully, but zero application paths were found inside."
 }
+
+# Credits
+Write-Host "Made by kastris_" -ForegroundColor Magenta

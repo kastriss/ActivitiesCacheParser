@@ -108,8 +108,8 @@ finally {
 
 # CSV OUTPUT
 if ($results.Count -gt 0) {
-    # Define file target directly to your Windows desktop environment
-    $csvPath = Join-Path ([Environment]::GetFolderPath("Desktop")) "Timeline_Execution_Report.csv"
+    # Define file target directly to your Windows downloads environment
+    $csvPath = Join-Path ([Environment]::GetFolderPath("Downloads")) "ActivitiesCache.csv"
     
     # Save the structured file output layout
     $results | Export-Csv -Path $csvPath -NoTypeInformation -Encoding UTF8
